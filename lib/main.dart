@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_sample/Lesson2/cart_page.dart';
 
+import 'Lesson2/home_page.dart';
 import 'home_page.dart';
 
 void main() {
@@ -12,7 +15,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      getPages: [
+        GetPage(name: '/home', page: () => Lesson2Homepage()),
+        GetPage(name: '/cart/:passingVariable', page: () => CartPage()),
+
+        // If you want to pass data using named routes
+        // GetPage(name: '/cart/:passingVariable', page: () => CartPage()),
+      ],
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -26,7 +36,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      initialRoute: '/home',
+      //home: Lesson2Homepage(),
     );
   }
 }
