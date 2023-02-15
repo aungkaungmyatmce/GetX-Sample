@@ -21,6 +21,12 @@ class ShopPage extends GetView<ShopController> {
             children: [
               Text(homeController.status.value),
               Text(controller.cart.value.toString()),
+              ElevatedButton(
+                onPressed: () {
+                  controller.updateCart(10);
+                },
+                child: Text('Change cart value'),
+              ),
             ],
           ),
         ),
