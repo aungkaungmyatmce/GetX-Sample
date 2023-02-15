@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:getx_sample/Lesson4/shop_page.dart';
+import 'Lesson4/home_page.dart';
+import 'bindings/home_binding.dart';
 import 'home_page.dart';
 
 void main() {
@@ -12,21 +15,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      //initialBinding: HomeBinding(),
+      getPages: [
+        GetPage(name: '/home', page: () => HomePage()),
+        GetPage(
+            name: '/lesson4home',
+            page: () => Lesson4HomePage(),
+            binding: HomeBinding()),
+        GetPage(name: '/shop', page: () => ShopPage(), binding: HomeBinding()),
+      ],
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      //home: HomePage(),
+
+      initialRoute: '/home',
     );
   }
 }
